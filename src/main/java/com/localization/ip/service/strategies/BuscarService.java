@@ -10,6 +10,7 @@ import com.localization.ip.model.ResponseModel;
 import com.localization.ip.service.DataRequest;
 import com.localization.ip.service.OpcionesService;
 import com.localization.ip.util.GeoLocalization;
+import com.localization.ip.util.Propiedades;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,12 +28,6 @@ import java.util.Objects;
 @AllArgsConstructor
 public class BuscarService implements OpcionesService {
 
-    private final String API_EXCHANGE_ACCESS_KEY = "ede902f3a4fb76bf9465b5692b823c7a";
-    private final String API_LOCALIZATOR_ACCESS_KEY = "33cb4cbcb239a0eae8bc72a9c57381b7";
-
-    private final String API_LOCALIZATOR_URL = "http://api.ipapi.com/api/";
-
-    private final String API_EXCHANGE_URL = "http://data.fixer.io/api/latest/";
     private final String ACCESS_KEY = "access_key";
     private final String SIMBOLS = "simbols";
 
@@ -42,6 +37,9 @@ public class BuscarService implements OpcionesService {
 
     @Autowired
     DataRequest dataRequest;
+
+    @Autowired
+    Propiedades propiedades;
 
     @Autowired
     DistanciasService distanciasService;
@@ -96,7 +94,7 @@ public class BuscarService implements OpcionesService {
     }
 
     private IpInfo devolverIpInfo(String ip) throws JsonProcessingException {
-        String urlToLocalizator = API_LOCALIZATOR_URL + ip + "?access_key=" + API_LOCALIZATOR_ACCESS_KEY;
+        String urlToLocalizator = propiedades.getAPI_LOCALIZATOR_URL() + ip + "?access_key=" + propiedades.getAPI_LOCALIZATOR_ACCESS_KEY();
         String ipDataFetched = dataRequest.getRequest(urlToLocalizator);
 
         IpInfo ipInfo = objectMapper.readValue(ipDataFetched, IpInfo.class);
@@ -105,7 +103,7 @@ public class BuscarService implements OpcionesService {
     }
 
     private Double devolverMonedaLocal(String localCurrency) throws JsonProcessingException {
-        String url = API_EXCHANGE_URL + "?" + ACCESS_KEY + "=" + API_EXCHANGE_ACCESS_KEY + "&" + SIMBOLS + "=" + localCurrency;
+        String url = propiedades.getAPI_EXCHANGE_URL() + "?" + ACCESS_KEY + "=" + propiedades.getAPI_EXCHANGE_ACCESS_KEY() + "&" + SIMBOLS + "=" + localCurrency;
 
         String jsonResponse = restTemplate.getForObject(url, String.class);
 

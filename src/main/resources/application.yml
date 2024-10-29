@@ -15,4 +15,14 @@ spring:
         ddl-auto: create
         dialect: org.hibernate.dialect.SQLServerDialect
 
+api-exchange:
+  access-key: ${ACCESS_KEY_EXCHANGE}
+  url: ${URL_EXCHANGE}
+api-localizator:
+  access-key: ${ACCESS_KEY_LOCALIZATOR}
+  url: ${URL_LOCALIZATOR}
+
+#VALORES DE VARIABLES DE ENTORNO
   #ACCESS_KEY_LOCALIZATOR=33cb4cbcb239a0eae8bc72a9c57381b7;URL_LOCALIZATOR=http://api.ipapi.com/api/;URL_EXCHANGE=http://data.fixer.io/api/latest;
+#COMANDO PARA CORRER EL APLICATIVO INSERTANDO VARIABLES DE ENTORNO DE LA LINEA SUPERIOR
+  #mvn spring-boot:run -D"spring-boot.run.arguments=8.242.150.100" -D"ACCESS_KEY_LOCALIZATOR=33cb4cbcb239a0eae8bc72a9c57381b7" -D'URL_LOCALIZATOR=http://api.ipapi.com/api/' -D'URL_EXCHANGE=http://data.fixer.io/api/latest' -D"ACCESS_KEY_EXCHANGE=ede902f3a4fb76bf9465b5692b823c7a"
