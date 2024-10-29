@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ipRequest
+    username: ipRequest
+    password: ipRequest123456
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 16
+      connection-init-sql: SELECT 1
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    properties:
+      hibernate:
+        ddl-auto: create
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  #ACCESS_KEY_LOCALIZATOR=33cb4cbcb239a0eae8bc72a9c57381b7;URL_LOCALIZATOR=http://api.ipapi.com/api/;URL_EXCHANGE=http://data.fixer.io/api/latest;
