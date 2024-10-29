@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ipRequest
+    url: jdbc:sqlserver://localhost:1433;databaseName=ipRequest
     username: ipRequest
     password: ipRequest123456
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     hikari:
       maximum-pool-size: 16
       connection-init-sql: SELECT 1
@@ -13,6 +13,6 @@ spring:
     properties:
       hibernate:
         ddl-auto: create
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.SQLServerDialect
 
   #ACCESS_KEY_LOCALIZATOR=33cb4cbcb239a0eae8bc72a9c57381b7;URL_LOCALIZATOR=http://api.ipapi.com/api/;URL_EXCHANGE=http://data.fixer.io/api/latest;
