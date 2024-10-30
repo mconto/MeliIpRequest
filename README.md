@@ -1,11 +1,13 @@
 # MeliIpRequest
 Este proyecto es la prueba de desarrollo para participar en proceso de selección con Mercado Libre.
 
-El comando de ejecución del aplicativo desde escritorio es el siguiente:
+El comando de ejecución del aplicativo desde terminal es el siguiente:
 
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-DAPI_EXCHANGE_ACCESS_KEY=ede902f3a4fb76bf9465b5692b823c7a -DAPI_EXCHANGE_URL=http://data.fixer.io/api/latest -DAPI_LOCALIZATOR_ACCESS_KEY=33cb4cbcb239a0eae8bc72a9c57381b7 -DAPI_LOCALIZATOR_URL=http://api.ipapi.com/api/" -Dspring-boot.run.arguments="201.244.109.55 BUSCAR"
 
-Consta de dos parámetros de entrada que son la IP y la estrategia de ejecución según el patrón "Strategy"
+Consta de dos parámetros de entrada que son la IP y la estrategia de ejecución según el patrón "Strategy". Las opciones son "BUSCAR", "COMPRAR", "PAGAR"; considerando que el microservicio se utiliza en los tres escenarios y puede personalizarse la estrategia a cada una de las opciones.
+
+Los servicios para obtener las distancas están expuestos en servicios REST mediante un controlador y consumen la base de datos del aplicativo construida en SQLServer. Se adjunta la instrucción SQL para crear la tabla.
 
 La IP introducida está localizada en Bogotá, el programa se corre desde linea de comandos y el argumento puede variar.
 
@@ -21,3 +23,13 @@ Se realizaron dos tipos diferentes de mapeo de data a partir de un servicio a un
 Se implementaron logs y control de excepciones.
 
 Implementación de patrones de diseño y principios SOLID.
+
+
+CREATE TABLE distancias (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    pais VARCHAR(255) NOT NULL,
+    distancia FLOAT NOT NULL,
+    invocaciones INT DEFAULT 0,
+    version INT,
+    CONSTRAINT CHK_Distancias_Distancia CHECK (distancia >= 0)
+);
