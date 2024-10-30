@@ -1,7 +1,6 @@
 package com.localization.ip.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import jakarta.persistence.*;
 import lombok.*;

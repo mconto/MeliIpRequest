@@ -27,8 +27,6 @@ import java.util.Objects;
 @AllArgsConstructor
 public class BuscarService implements OpcionesService {
 
-
-
     private final String BUSCAR = "BUSCAR";
 
 
@@ -55,7 +53,7 @@ public class BuscarService implements OpcionesService {
         DecimalFormat df = new DecimalFormat("#,###");
         IpInfo ipInfo = apiClient.devolverIpInfo(ip);
 
-        if (Objects.isNull(ipInfo.getCurrency())){
+        if (Objects.isNull(ipInfo.getCurrency())) {
             Currency currency = new Currency();
             currency.setCode("COP");
             ipInfo.setCurrency(currency);

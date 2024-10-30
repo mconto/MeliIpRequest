@@ -20,7 +20,7 @@ public class DistanciasCtr {
 
     @GetMapping("/distancia-lejana")
     public ResponseEntity<Distancias> returnDistanciaLejana() {
-        Distancias distancias = null;
+        Distancias distancias;
         try {
             distancias = distanciasService.encontrarDistanciaLejana();
             return ResponseEntity.ok(distancias);
@@ -31,7 +31,7 @@ public class DistanciasCtr {
 
     @GetMapping("/distancia-cercana")
     public ResponseEntity<Distancias> returnDistanciaCercana() {
-        Distancias distancias = null;
+        Distancias distancias;
         try {
             distancias = distanciasService.encontrarDistanciaCercana();
             return ResponseEntity.ok(distancias);
@@ -42,7 +42,7 @@ public class DistanciasCtr {
 
     @GetMapping("/promedio-distancias")
     public ResponseEntity<Double> returnPromedioDistancia() {
-        Double promDistancias = null;
+        Double promDistancias;
         try {
             promDistancias = distanciasService.calcularPromedio();
             return ResponseEntity.ok(promDistancias);

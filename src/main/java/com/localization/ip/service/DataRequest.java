@@ -1,6 +1,5 @@
 package com.localization.ip.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.failsafe.Failsafe;
 import dev.failsafe.RetryPolicy;
 import lombok.RequiredArgsConstructor;
