@@ -4,21 +4,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.localization.ip.api.ApiClient;
 import com.localization.ip.model.Currency;
 import com.localization.ip.model.Distancias;
-import com.localization.ip.model.InputRequest;
 import com.localization.ip.model.IpInfo;
 import com.localization.ip.model.ResponseModel;
-import com.localization.ip.service.DataRequest;
 import com.localization.ip.service.OpcionesService;
 import com.localization.ip.util.GeoLocalization;
 import com.localization.ip.util.ResponseFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurityAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -54,9 +50,7 @@ public class PagarService implements OpcionesService {
         String localCurrency = ipInfo.getCurrency().getCode();
 
         List<String> formattedLanguage = new ArrayList<>();
-        ipInfo.getLocation().getLanguages().forEach(language -> {
-            formattedLanguage.add(String.format("%s (%s)", language.getNativeLanguage(), language.getCode()));
-        });
+        ipInfo.getLocation().getLanguages().forEach(language -> formattedLanguage.add(String.format("%s (%s)", language.getNativeLanguage(), language.getCode())));
 
         Double monedaLocalEnUsd = apiClient.devolverMonedaLocal(localCurrency);
         String formatMoney = df.format(monedaLocalEnUsd);

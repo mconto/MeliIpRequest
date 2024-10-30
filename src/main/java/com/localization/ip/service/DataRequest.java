@@ -1,14 +1,11 @@
 package com.localization.ip.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.localization.ip.model.IpInfo;
 import dev.failsafe.Failsafe;
 import dev.failsafe.RetryPolicy;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;
@@ -16,10 +13,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-
-import static com.localization.ip.service.HttpMethod.PATCH;
-import static com.localization.ip.service.HttpMethod.POST;
-
 
 @Component
 @RequiredArgsConstructor
@@ -30,7 +23,6 @@ public class DataRequest {
     public static String getRequest(String url) {
 
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
             HttpRequest request = buildRequest(url, null, HttpMethod.GET);
             HttpResponse<String> response = sendRequest(request);
             return response.body();

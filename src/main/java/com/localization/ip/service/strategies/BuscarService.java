@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.localization.ip.api.ApiClient;
 import com.localization.ip.model.Currency;
 import com.localization.ip.model.Distancias;
-import com.localization.ip.model.ExchangeRateResponse;
 import com.localization.ip.model.IpInfo;
 import com.localization.ip.model.ResponseModel;
 import com.localization.ip.service.DataRequest;
@@ -17,10 +16,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -34,7 +31,6 @@ public class BuscarService implements OpcionesService {
 
     private final String BUSCAR = "BUSCAR";
 
-    private final RestTemplate restTemplate;
 
     @Autowired
     ApiClient apiClient;
@@ -68,9 +64,7 @@ public class BuscarService implements OpcionesService {
         String localCurrency = ipInfo.getCurrency().getCode();
 
         List<String> formattedLanguage = new ArrayList<>();
-        ipInfo.getLocation().getLanguages().forEach(language -> {
-            formattedLanguage.add(String.format("%s (%s)", language.getNativeLanguage(), language.getCode()));
-        });
+        ipInfo.getLocation().getLanguages().forEach(language -> formattedLanguage.add(String.format("%s (%s)", language.getNativeLanguage(), language.getCode())));
 
         Double monedaLocalEnUsd = apiClient.devolverMonedaLocal(localCurrency);
         String formatMoney = df.format(monedaLocalEnUsd);

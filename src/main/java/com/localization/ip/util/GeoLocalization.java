@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Getter
 public class GeoLocalization {
 
-    private final Double longitudMeliArg = -58.4943709;
-    private final Double latitudMeliArg = -34.5476108;
+    private final Double longitudMeliArg = -58.37723;
+    private final Double latitudMeliArg = -34.61315;
 
     public Double calcularDistancia(Double longitudIp, Double latitudIp) {
 
