@@ -3,7 +3,9 @@ Este proyecto es la prueba de desarrollo para participar en proceso de selecció
 
 El comando de ejecución del aplicativo desde escritorio es el siguiente:
 
-# #mvn spring-boot:run -D"spring-boot.run.arguments=8.242.150.100" -D"ACCESS_KEY_LOCALIZATOR=33cb4cbcb239a0eae8bc72a9c57381b7" -D'URL_LOCALIZATOR=http://api.ipapi.com/api/' -D'URL_EXCHANGE=http://data.fixer.io/api/latest' -D"ACCESS_KEY_EXCHANGE=ede902f3a4fb76bf9465b5692b823c7a"
+mvn spring-boot:run -Dspring-boot.run.jvmArguments="-DAPI_EXCHANGE_ACCESS_KEY=ede902f3a4fb76bf9465b5692b823c7a -DAPI_EXCHANGE_URL=http://data.fixer.io/api/latest -DAPI_LOCALIZATOR_ACCESS_KEY=33cb4cbcb239a0eae8bc72a9c57381b7 -DAPI_LOCALIZATOR_URL=http://api.ipapi.com/api/" -Dspring-boot.run.arguments="201.244.109.55 BUSCAR"
+
+Consta de dos parámetros de entrada que son la IP y la estrategia de ejecución según el patrón "Strategy"
 
 La IP introducida está localizada en Bogotá, el programa se corre desde linea de comandos y el argumento puede variar.
 
