@@ -16,7 +16,6 @@ import java.util.Objects;
 @Builder
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class ResponseFactory {
 
 

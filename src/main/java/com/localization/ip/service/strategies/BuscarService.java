@@ -37,6 +37,9 @@ public class BuscarService implements OpcionesService {
     private final RestTemplate restTemplate;
 
     @Autowired
+    ApiClient apiClient;
+
+    @Autowired
     DataRequest dataRequest;
 
     @Autowired
@@ -54,7 +57,7 @@ public class BuscarService implements OpcionesService {
     @Override
     public ResponseModel response(String ip) throws JsonProcessingException {
         DecimalFormat df = new DecimalFormat("#,###");
-        IpInfo ipInfo = ApiClient.devolverIpInfo(ip);
+        IpInfo ipInfo = apiClient.devolverIpInfo(ip);
 
         if (Objects.isNull(ipInfo.getCurrency())){
             Currency currency = new Currency();
@@ -69,7 +72,7 @@ public class BuscarService implements OpcionesService {
             formattedLanguage.add(String.format("%s (%s)", language.getNativeLanguage(), language.getCode()));
         });
 
-        Double monedaLocalEnUsd = ApiClient.devolverMonedaLocal(localCurrency);
+        Double monedaLocalEnUsd = apiClient.devolverMonedaLocal(localCurrency);
         String formatMoney = df.format(monedaLocalEnUsd);
         monedaLocalEnUsd = Double.parseDouble(formatMoney);
         Double distancia = geoLocalization.calcularDistancia(ipInfo.getLongitude(), ipInfo.getLatitude());

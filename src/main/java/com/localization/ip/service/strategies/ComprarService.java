@@ -32,12 +32,11 @@ public class ComprarService implements OpcionesService {
 
     private final String COMPRAR = "COMPRAR";
 
+    @Autowired
+    ApiClient apiClient;
 
     @Autowired
     DistanciasService distanciasService;
-
-    @Autowired
-    ApiClient apiClient;
 
     @Autowired
     GeoLocalization geoLocalization;

@@ -1,27 +1,3 @@
-spring:
-  datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=ipRequest
-    username: ipRequest
-    password: ipRequest123456
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    hikari:
-      maximum-pool-size: 16
-      connection-init-sql: SELECT 1
-  jpa:
-    show-sql: true
-    generate-ddl: false
-    properties:
-      hibernate:
-        ddl-auto: create
-        dialect: org.hibernate.dialect.SQLServerDialect
-
-api-exchange:
-  access-key: ${ACCESS_KEY_EXCHANGE}
-  url: ${URL_EXCHANGE}
-api-localizator:
-  access-key: ${ACCESS_KEY_LOCALIZATOR}
-  url: ${URL_LOCALIZATOR}
-
 #VALORES DE VARIABLES DE ENTORNO
   #ACCESS_KEY_LOCALIZATOR=33cb4cbcb239a0eae8bc72a9c57381b7;URL_LOCALIZATOR=http://api.ipapi.com/api/;URL_EXCHANGE=http://data.fixer.io/api/latest;
 #COMANDO PARA CORRER EL APLICATIVO INSERTANDO VARIABLES DE ENTORNO DE LA LINEA SUPERIOR

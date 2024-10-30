@@ -33,7 +33,7 @@ public class ApiClient {
 
     private final RestTemplate restTemplate;
 
-    public static IpInfo devolverIpInfo(String ip) throws JsonProcessingException {
+    public IpInfo devolverIpInfo(String ip) throws JsonProcessingException {
         String urlToLocalizator = propiedades.getAPI_LOCALIZATOR_URL() + ip + "?access_key=" + propiedades.getAPI_LOCALIZATOR_ACCESS_KEY();
         String ipDataFetched = dataRequest.getRequest(urlToLocalizator);
 
@@ -42,7 +42,7 @@ public class ApiClient {
         return ipInfo;
     }
 
-    public static Double devolverMonedaLocal(String localCurrency) throws JsonProcessingException {
+    public Double devolverMonedaLocal(String localCurrency) throws JsonProcessingException {
         String url = propiedades.getAPI_EXCHANGE_URL() + "?" + ACCESS_KEY + "=" + propiedades.getAPI_EXCHANGE_ACCESS_KEY() + "&" + SIMBOLS + "=" + localCurrency;
 
         String jsonResponse = restTemplate.getForObject(url, String.class);

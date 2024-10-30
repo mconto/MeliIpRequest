@@ -20,6 +20,7 @@ public class DistanciasService implements DistanciasI {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DistanciasService.class);
 
+    @Autowired
     DistanciasRepo distanciasRepo;
 
     @Override
