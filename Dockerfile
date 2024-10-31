@@ -6,6 +6,9 @@ COPY target/ip-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8081
 
+ENV BASE_DE_DATOS_URL=jdbc:sqlserver://DESKTOP-M01IACH\\SQLEXPRESS;databaseName=meliDb;TrustServerCertificate=True
+ENV BASE_DE_DATOS_USUARIO=sa
+ENV BASE_DE_DATOS_PASS=egallery
 ENV API_EXCHANGE_ACCESS_KEY=ede902f3a4fb76bf9465b5692b823c7a
 ENV API_EXCHANGE_URL=http://data.fixer.io/api/latest
 ENV API_LOCALIZATOR_ACCESS_KEY=33cb4cbcb239a0eae8bc72a9c57381b7
