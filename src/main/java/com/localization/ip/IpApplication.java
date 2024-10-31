@@ -36,8 +36,8 @@ public class IpApplication {
 			if (args1.length > 1) {
 				String ip = args1[0];
 				String operacion = args1[1];
-				System.out.println("Parámetro recibido: " + ip);
-				System.out.println("Parámetro recibido: " + operacion);
+				System.out.println("IP: " + ip);
+				System.out.println("Operación seleccionada: " + operacion);
 
 
 				OpcionesService opcionesService =opcionesMapStrategy.getOpcionesService(operacion);
