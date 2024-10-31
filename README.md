@@ -1,7 +1,23 @@
 # MeliIpRequest
 Este proyecto es la prueba de desarrollo para participar en proceso de selección con Mercado Libre.
 
-El comando de ejecución del aplicativo desde terminal es el siguiente:
+El comando de empaquetado del aplicativo es el siguiente:
+
+# mvnw clean package -Dspring.profiles.active=dev
+
+El comando de creación de la imagen docker es el siguiente:
+
+# docker build -t meli-app .
+
+El comando de ejecución de la imagen docker es el siguiente:
+
+# docker run -p 8081:8081 meli-app 201.244.109.55 BUSCAR
+La palabra "BUSCAR" puede cambiar por "PAGAR" o "COMPRAR" según sea la necesidad.
+Las variables de entorno se encuentran configuradas en el Dockerfile para este escenario.
+
+-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!
+
+Para la ejecución desde maven el comando es el siguiente:
 
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-DAPI_EXCHANGE_ACCESS_KEY=ede902f3a4fb76bf9465b5692b823c7a -DAPI_EXCHANGE_URL=http://data.fixer.io/api/latest -DAPI_LOCALIZATOR_ACCESS_KEY=33cb4cbcb239a0eae8bc72a9c57381b7 -DAPI_LOCALIZATOR_URL=http://api.ipapi.com/api/ -DBASE_DE_DATOS_URL=jdbc:sqlserver://DESKTOP-M01IACH\\SQLEXPRESS;databaseName=meliDb;TrustServerCertificate=True -DBASE_DE_DATOS_USUARIO=sa -DBASE_DE_DATOS_PASS=egallery" -Dspring-boot.run.arguments="201.244.109.55 BUSCAR"
 
